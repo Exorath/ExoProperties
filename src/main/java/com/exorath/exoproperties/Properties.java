@@ -110,4 +110,8 @@ public class Properties {
     private boolean hasValue(Property property) {
         return properties.get(property).hasValue();
     }
+
+    public static Properties create(){
+        return new Properties();
+    }
 }

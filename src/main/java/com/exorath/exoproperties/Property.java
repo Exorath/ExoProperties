@@ -24,7 +24,18 @@ import java.util.List;
  */
 public class Property<E> {
     private E def;
-    private List<String> tags = new ArrayList<String>();
+    private List<String> tags;
+
+    public Property(){
+        this(null);
+    }
+    public Property(E def){
+        this(def, null);
+    }
+    public Property(E def, List<String> tags){
+        this.def = def;
+        this.tags = tags == null ? new ArrayList<>() : tags;
+    }
     public List<String> getTags() {
         return tags;
     }
@@ -35,5 +46,17 @@ public class Property<E> {
 
     public void setDefault(E def) {
         this.def = def;
+    }
+
+    public static Property create(){
+        return new Property();
+    }
+
+    public static <E> Property<E> create(E def){
+        return new Property(def);
+    }
+
+    public static <E> Property<E> create(E def, List<String> tags){
+        return  new Property<>(def, tags);
     }
 }
